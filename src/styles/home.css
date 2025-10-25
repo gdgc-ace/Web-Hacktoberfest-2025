@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.home-container {
+  font-family: 'Poppins', sans-serif;
+  color: #202124;
+  background: #f8f9fa;
+}
+
+/* === HERO SECTION === */
+.hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 6rem 2rem;
+  color: white;
+  background: linear-gradient(120deg, #4285F4, #EA4335, #FBBC05, #34A853);
+  background-size: 400% 400%;
+  animation: gradientFlow 10s ease infinite;
+  border-radius: 0 0 60px 60px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Animated background gradient */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating decorative circles */
+.hero::before, .hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 0;
+  animation: float 10s ease-in-out infinite alternate;
+}
+.hero::before {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 15%;
+  animation-delay: 1s;
+}
+.hero::after {
+  width: 300px;
+  height: 300px;
+  bottom: 10%;
+  right: 10%;
+}
+
+@keyframes float {
+  from { transform: translateY(0) rotate(0); }
+  to { transform: translateY(-30px) rotate(20deg); }
+}
+
+/* Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: auto;
+  animation: fadeUp 1.2s ease;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #fff, #e3e3e3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #f1f3f4;
+  margin-bottom: 2rem;
+}
+
+/* Fancy CTA Button */
+.hero button {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
+  background-size: 300%;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  z-index: -1;
+}
+
+.hero button:hover::before {
+  opacity: 1;
+  animation: borderMove 3s linear infinite;
+}
+
+.hero button:hover {
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* === CAROUSEL SECTION === */
+.carousel {
+  margin-top: 4rem;
+  text-align: center;
+  animation: fadeUp 1s ease;
+}
+
+.carousel h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #202124;
+  margin-bottom: 1rem;
+}
+
+.carousel-images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.carousel-images img {
+  border-radius: 12px;
+  width: 220px;
+  height: 140px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.carousel-images img:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1.5rem;
+    border-radius: 0 0 40px 40px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .carousel-images img {
+    width: 160px;
+    height: 100px;
+  }
+}

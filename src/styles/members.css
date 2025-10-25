@@ -1,0 +1,140 @@
+/* Import same modern font for consistency */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.members-container {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+  color: #202124;
+}
+
+.members-container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #202124;
+  animation: fadeDown 0.6s ease;
+}
+
+.members-container p {
+  color: #5f6368;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  animation: fadeUp 0.8s ease;
+}
+
+/* --- Member Card --- */
+.card {
+  background: #fff;
+  padding: 1.5rem 1rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
+  background-size: 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.card:hover::before {
+  opacity: 1;
+  animation: borderMove 4s linear infinite;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Member Image --- */
+.card img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 0.8rem;
+  border: 3px solid transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+/* --- Member Name & Role --- */
+.card h3 {
+  font-size: 1.1rem;
+  margin-top: 0.4rem;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #5f6368;
+  margin-top: 0.2rem;
+}
+
+/* --- Animations --- */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* --- Responsive Tweaks --- */
+@media (max-width: 600px) {
+  .members-container {
+    padding: 2rem 1rem;
+  }
+  .card img {
+    width: 80px;
+    height: 80px;
+  }
+}
