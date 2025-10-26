@@ -19,7 +19,7 @@
   animation: gradientFlow 10s ease infinite;
   border-radius: 0 0 60px 60px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  z-index: -1; /* ❌ Issue: This pushes the hero behind other content. Hint: Use z-index: 0 or remove it */
+  z-index: 1; /* ✅ Fixed: Changed from -1 to 1 to make hero section visible */
 }
 
 @keyframes gradientFlow {
