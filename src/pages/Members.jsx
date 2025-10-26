@@ -19,4 +19,6 @@ const Members = () => (
   </div>
 );
 
+// If you want to, then you can add your image in the public/assets folder , it will be used later when this page gets worked on
+
 export default Members;
