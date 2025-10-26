@@ -13,6 +13,7 @@ const Home = () => (
     <div className="carousel">
       <h2>Our Highlights</h2>
       <div className="carousel-images">
+        {/* Issue: no images here. hint: add placeholder images in public/assets folder and link them here */}
         <img src="event1.jpg" alt="Event 1" />
         <img src="event2.jpg" alt="Event 2" />
         <img src="event3.jpg" alt="Event 3" />
@@ -23,3 +24,4 @@ const Home = () => (
 );
 
 export default Home;
+
