@@ -4,6 +4,7 @@
   font-family: 'Poppins', sans-serif;
   color: #202124;
   background: #f8f9fa;
+  /* Issue: Missing padding or margin may cause content to touch edges */
 }
 
 /* === HERO SECTION === */
@@ -18,9 +19,9 @@
   animation: gradientFlow 10s ease infinite;
   border-radius: 0 0 60px 60px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: -1; /* ❌ Issue: This pushes the hero behind other content. Hint: Use z-index: 0 or remove it */
 }
 
-/* Animated background gradient */
 @keyframes gradientFlow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -36,6 +37,7 @@
   z-index: 0;
   animation: float 10s ease-in-out infinite alternate;
 }
+
 .hero::before {
   width: 200px;
   height: 200px;
@@ -43,6 +45,7 @@
   left: 15%;
   animation-delay: 1s;
 }
+
 .hero::after {
   width: 300px;
   height: 300px;
@@ -79,6 +82,7 @@
   font-weight: 400;
   color: #f1f3f4;
   margin-bottom: 2rem;
+  /* ❌ Issue: Color too light on white background. Hint: Use rgba or darker shade */
 }
 
 /* Fancy CTA Button */
@@ -145,18 +149,47 @@
   margin-top: 2rem;
 }
 
-.carousel-images img {
-  border-radius: 12px;
+/* ❌ Issue: Cards are just images. Let's wrap them in divs for hover effects */
+.carousel-card {
+  position: relative;
   width: 220px;
   height: 140px;
-  object-fit: cover;
+  border-radius: 12px;
+  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: white;
+  cursor: pointer;
 }
 
-.carousel-images img:hover {
+.carousel-card:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Optional overlay text */
+.carousel-card::after {
+  content: "Explore";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-card:hover::after {
+  opacity: 1;
 }
 
 /* Animations */
@@ -173,17 +206,15 @@
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
-  .hero {
-    padding: 4rem 1.5rem;
-    border-radius: 0 0 40px 40px;
-  }
-
   .hero h1 {
-    font-size: 2.2rem;
+    font-size: 2.2rem; /* ✅ Hint: Scale down for tablets */
   }
+  .carousel-card {
+    width: 180px;
+    height: 120px;
+  }
+}
 
-  .carousel-images img {
-    width: 160px;
-    height: 100px;
-  }
+@media (max-width: 480px) {
+  /* for smaller screen devices like phones. make changes in components as per mobile layout here */
 }
