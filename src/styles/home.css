@@ -82,7 +82,6 @@
   font-weight: 400;
   color: #f1f3f4;
   margin-bottom: 2rem;
-  /* ❌ Issue: Color too light on white background. Hint: Use rgba or darker shade */
 }
 
 /* Fancy CTA Button */
@@ -149,7 +148,7 @@
   margin-top: 2rem;
 }
 
-/* ❌ Issue: Cards are just images. Let's wrap them in divs for hover effects */
+/* ❌ Issue: Cards are just images. Wrap them in divs and add hover effects */
 .carousel-card {
   position: relative;
   width: 220px;
@@ -210,11 +209,11 @@
     font-size: 2.2rem; /* ✅ Hint: Scale down for tablets */
   }
   .carousel-card {
-    width: 180px;
-    height: 120px;
+    width: 210px;  /* ✅ Hint: Scale down for tablets */
+    height: 140px; /* ✅ Hint: Scale down for tablets */
   }
 }
 
 @media (max-width: 480px) {
-  /* for smaller screen devices like phones. make changes in components as per mobile layout here */
+  /* issue: for smaller screen devices like phones. make changes in components as per mobile layout here */
 }
